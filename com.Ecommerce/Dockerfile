@@ -1,15 +1,12 @@
-# Use an official OpenJDK image from Eclipse Temurin
-FROM eclipse-temurin:17-jdk-alpine
+# Use an official OpenJDK runtime as a parent image
+FROM openjdk:17-jdk-slim
 
-# Set the working directory inside the container
+# Set the working directory
 WORKDIR /app
 
-# Copy the jar file from target to the container
+# Copy the jar file to the container
 COPY target/*.jar app.jar
 
 # Run the jar file
 ENTRYPOINT ["java", "-jar", "app.jar"]
-
-# Expose the port (Render uses this to run your app)
-EXPOSE 8080
 
